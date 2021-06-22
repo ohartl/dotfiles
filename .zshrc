@@ -2,6 +2,7 @@
 
 
 # Envirnoment vars
+# shellcheck source=/dev/null
 source ~/.vars
 
 
@@ -10,6 +11,7 @@ export ZSH=$HOME/.dotfiles/modules/oh-my-zsh
 ZSH_DISABLE_COMPFIX=true
 
 # Allow local customizations in the ~/.zshrc_before.local file
+# shellcheck source=/dev/null
 [ -f ~/.zshrc_before.local ] && source ~/.zshrc_before.local
 
 
@@ -48,7 +50,8 @@ unsetopt BG_NICE
 
 
 # Start oh-my-zsh with settings
-source $ZSH/oh-my-zsh.sh
+# shellcheck source=/dev/null
+source "${ZSH}/oh-my-zsh.sh"
 
 
 # fix for agnoster theme prompt context
@@ -61,8 +64,10 @@ source $ZSH/oh-my-zsh.sh
 #fi
 
 # Aliases
+# shellcheck source=/dev/null
 source ~/.aliases
 
 
 # Allow local customizations in the ~/.zshrc_after.local file
+# shellcheck source=/dev/null
 [ -f ~/.zshrc_after.local ] && source ~/.zshrc_after.local

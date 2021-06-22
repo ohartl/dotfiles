@@ -9,10 +9,12 @@ esac
 
 
 # Envirnoment vars
+# shellcheck source=/dev/null
 source ~/.vars
 
 
 # Allow local customizations in the ~/.bashrc_before.local file
+# shellcheck source=/dev/null
 [ -f ~/.bashrc_before.local ] && source ~/.bashrc_before.local
 
 
@@ -33,8 +35,10 @@ shopt -s globstar
 
 
 # Aliases
+# shellcheck source=/dev/null
 source ~/.aliases
 
 
 # Allow local customizations in the ~/.bashrc_after.local file
+# shellcheck source=/dev/null
 [ -f ~/.bashrc_after.local ] && source ~/.bashrc_after.local
