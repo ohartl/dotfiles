@@ -72,11 +72,13 @@ function in() {
 alias g='git'
 alias gs='git status'
 alias gc='git commit'
+alias gcam='git commit -am'
+alias gp='git pull --rebase'
+alias glog_new='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 alias glog='git log --graph --decorate --all'
 alias gl='glog'
 alias glatest='git tag | sort -V | tail -n 1'
 alias gclean='git-remove-merged-branches'
-
 
 alias d='docker'
 alias dc='docker-compose'
@@ -93,6 +95,17 @@ eval $(thefuck --alias f)
 for __cmd in apt apt-get apt-add-repository service; do
   eval "alias $__cmd='sudo $__cmd'"
 done ; unset __cmd
+
+
+# Delete a given line number in the known_hosts file.
+knownrm() {
+ re='^[0-9]+$'
+ if ! [[ $1 =~ $re ]] ; then
+   echo "error: line number missing" >&2;
+ else
+   sed -i '' "$1d" ~/.ssh/known_hosts
+ fi
+}
 
 
 # Allow local customizations in the ~/.aliases.local file

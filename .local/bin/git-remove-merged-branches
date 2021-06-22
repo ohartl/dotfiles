@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+git remote prune origin && git branch --merged | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" | egrep -v "(^\*|master|dev)" | xargs -r git branch -d

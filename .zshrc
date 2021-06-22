@@ -3,7 +3,7 @@
 
 # Envirnoment vars
 # shellcheck source=/dev/null
-source ~/.vars
+[ -f ~/.vars ] && source ~/.vars
 
 
 # Path to the oh-my-zsh installation
@@ -17,6 +17,9 @@ ZSH_DISABLE_COMPFIX=true
 
 # ZSH Settings
 #####################################################################
+
+# Don't require escaping globbing characters in zsh.
+unsetopt nomatch
 
 # Set automatic cd (typing directory name with no 'cd')
 setopt autocd
@@ -41,7 +44,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Plugins for oh-my-zsh. Too many plugins slow down shell startup
-plugins=(autojump git_client docker docker-compose composer phing)
+plugins=(autojump git brew docker docker-compose)
+# git_client history-substring-search
 
 # Make autojump plugin work on WSL
 unsetopt BG_NICE
@@ -65,7 +69,7 @@ source "${ZSH}/oh-my-zsh.sh"
 
 # Aliases
 # shellcheck source=/dev/null
-source ~/.aliases
+[ -f ~/.aliases ] && source ~/.aliases
 
 
 # Allow local customizations in the ~/.zshrc_after.local file
