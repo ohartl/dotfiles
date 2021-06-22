@@ -1,0 +1,25 @@
+set autoindent
+set historylog
+set positionlog
+
+set constantshow
+set nonewlines
+set nowrap
+#set multibuffer
+
+set unix
+
+set tabsize 2
+set tabstospaces
+
+set smooth
+set morespace
+
+set linenumbers
+set constantshow
+set keycolor red
+set functioncolor green
+set numbercolor brightyellow
+set statuscolor black,yellow
+
+#include "~/.dotfiles/modules/nanorc-syntax/*.nanorc"

@@ -1,0 +1,127 @@
+# Update dotfiles
+function dfu() {
+    (
+        cd ~/.dotfiles && git pull --ff && ./install -q
+    )
+}
+
+
+# colored commands
+if type dircolors > /dev/null; then
+    eval "`dircolors`"
+    alias ls='ls --color=auto'
+fi
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# general commands
+alias ll='ls -laF'
+alias la='ls -A'
+alias l='ls -CF'
+alias v='vim'
+alias diff='git diff --no-index'
+
+# basic directory operations
+alias ..='cd ..'
+alias cd..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~'
+# cd to git root directory
+alias cdgr='cd "$(git root)"'
+
+
+# mv, rm, cp, ..
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
+alias chmox='sudo chmod +x'
+alias chome='sudo chown $(id -u):$(id -g)'
+
+
+# Jump to directory containing file
+function jump() {
+    cd "$(dirname ${1})"
+}
+
+
+# Go up [n] directories
+function up()
+{
+    if [[ "${1}" == "" ]]; then
+        cd ..
+    elif ! [[ "${1}" =~ ^[0-9]+$ ]]; then
+        echo "Error: argument must be a number"
+    elif ! [[ "${1}" -gt "0" ]]; then
+        echo "Error: argument must be positive"
+    else
+        for i in {1..${1}}; do
+            cd ..
+        done
+    fi
+}
+
+
+# Execute a command in a specific directory
+function in() {
+    (
+        cd ${1} && shift && ${@}
+    )
+}
+
+
+# dev commands
+alias g='git'
+alias gs='git status'
+alias gc='git commit'
+alias glog='git log --graph --decorate --all'
+alias gl='glog'
+alias glatest='git tag | sort -V | tail -n 1'
+alias gclean='git-remove-merged-branches'
+
+
+alias d='docker'
+alias dc='docker-compose'
+#alias dbuild='docker build ..'
+alias dclean='docker images -q --filter "dangling=true" | xargs docker rmi  > /dev/null 2>&1'
+
+
+# php dev commands
+function phing() {
+    (
+    git rev-parse --git-dir > /dev/null 2>&1
+    if (($? > 0)); then
+        local phing_path="vendor/bin/phing"
+        if [ -f "$phing_path" ]; then
+            $phing_path ${@}
+        else
+            echo "phing could not be found in $phing_path"
+        fi
+    else
+        local phing_path="$(git rev-parse --show-toplevel)/vendor/bin/phing"
+        if [ -f "$phing_path" ]; then
+            $phing_path ${@}
+        else
+            echo "phing could not be found in $phing_path"
+        fi
+    fi
+    )
+}
+alias p='phing'
+
+
+# less fuckery
+eval $(thefuck --alias)
+eval $(thefuck --alias f)
+
+
+# Auto sudo prefixes
+for __cmd in apt apt-get apt-add-repository service; do
+  eval "alias $__cmd='sudo $__cmd'"
+done ; unset __cmd
+
+
+# Allow local customizations in the ~/.aliases.local file
+[ -f ~/.aliases.local ] && source ~/.aliases.local

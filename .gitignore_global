@@ -1,0 +1,40 @@
+# inspired by parts of https://github.com/github/gitignore/tree/master/Global
+
+# Linux
+*~
+.fuse_hidden*
+.Trash-*
+.directory
+.nfs*
+
+# macOS
+._*
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# JetBrains IDE project files
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# VSCode
+.vscode/
+
+# Private key - never ever commit that
+*.ppk
+
+# Diff files
+*.patch
+*.diff
