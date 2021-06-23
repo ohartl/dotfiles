@@ -30,7 +30,7 @@ module.exports = {
       initialWorkingDirectory: '~'
     },
 
-    shell: '',
+    shell: 'zsh',
     shellArgs: ['--login'],
     env: {}
   },
