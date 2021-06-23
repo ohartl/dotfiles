@@ -12,8 +12,8 @@ set unix
 set tabsize 2
 set tabstospaces
 
-set smooth
-set morespace
+#set smooth
+#set morespace
 
 set linenumbers
 set constantshow
@@ -22,4 +22,9 @@ set functioncolor green
 set numbercolor brightyellow
 set statuscolor black,yellow
 
-#include "~/.dotfiles/modules/nanorc-syntax/*.nanorc"
+include "/usr/local/opt/nano/share/nano/default.nanorc"
+include "/usr/local/opt/nano/share/nano/makefile.nanorc"
+include "/usr/local/opt/nano/share/nano/sh.nanorc"
+include "/usr/local/opt/nano/share/nano/markdown.nanorc"
+include "/usr/local/opt/nano/share/nano/json.nanorc"
+include "/usr/local/opt/nano/share/nano/nanorc.nanorc"
