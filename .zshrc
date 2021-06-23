@@ -67,6 +67,13 @@ source "${ZSH}/oh-my-zsh.sh"
 #    }
 #fi
 
+
+# make cd use the ls colours
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
+
+
 # Aliases
 # shellcheck source=/dev/null
 [ -f ~/.aliases ] && source ~/.aliases
