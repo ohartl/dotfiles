@@ -44,7 +44,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Plugins for oh-my-zsh. Too many plugins slow down shell startup
-plugins=(autojump git brew docker docker-compose)
+plugins=(autojump git brew history docker docker-compose)
 # git_client history-substring-search
 
 # Make autojump plugin work on WSL
@@ -70,13 +70,21 @@ source "${ZSH}/oh-my-zsh.sh"
 
 # make cd use the ls colours
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
-autoload -Uz compinit
-compinit
+
+
+# Bash-style time output.
+export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
 
 
 # Aliases
 # shellcheck source=/dev/null
 [ -f ~/.aliases ] && source ~/.aliases
+
+
+# Completions.
+autoload -Uz compinit && compinit
+# Case insensitive.
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 
 # Allow local customizations in the ~/.zshrc_after.local file
