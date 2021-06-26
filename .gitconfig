@@ -40,13 +40,15 @@
 [diff]
   ignoreSubmodules = dirty
 
-[pager]
-  log = ~/.local/bin/diff-highlight | less
-  show = ~/.local/bin/diff-highlight | less
-  diff = ~/.local/bin/diff-highlight | less
+# Set in `~/.gitconfig.local` via
+#   - `ohartl/workstation-playbook-mac`
+#[pager]
+#  log = ~/.local/bin/diff-highlight | less
+#  show = ~/.local/bin/diff-highlight | less
+#  diff = ~/.local/bin/diff-highlight | less
 
-[interactive]
-  diffFilter = ~/.local/bin/diff-highlight
+#[interactive]
+#  diffFilter = ~/.local/bin/diff-highlight
 
 [color]
   ui = always
